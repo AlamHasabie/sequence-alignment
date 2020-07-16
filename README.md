@@ -54,7 +54,8 @@ Silahkan lakukan *fork* dari *repository* ini.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Silahkan hubungi asisten lewat line @alamhasabiebaru atau lewat email 13517096@std.stei.itb.ac.id dengan subjek  \[SELEKSI IRK - SEQUENCE ALIGNMENT\] . *Note : waktu menjawab bervariasi, namun email biasanya akan dibalas kurang dari sehari. Line mungkin tidak dibalas dalam waktu satu-dua hari. Mohon bersabar :)*. Pertanyaan juga dipersilahkan. Jawaban akan diposting dalam bagian QnA README ini.
 
 ## QnA
-null.
+1. Apakah saya boleh menggunakan data sekuens asam amino yang tidak ada di repo ini ? Hanya ada dua sekuens asam amino yang diberikan. <br>
+**Boleh !**. Silahkan ambil data dari website https://www.ncbi.nl.nih.gov . Bila anda ingin menggunakan data yang diberikan, carilah sekuens asam amino glikoprotein dari sebuah *strain* Coronavirus agar skor anda lebih tinggi. Masukkan data ke repository sebagai bagian dari *deliverables*.
 
 ## Referensi
 Silahkan gunakan referensi berikut sebagai awal pengerjaan tugas:<br>

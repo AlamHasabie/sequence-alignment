@@ -16,46 +16,41 @@ Terdapat dua titik capai dalam tugas ini :
 1. Implementasi algoritma Needleman-Wunsch , algoritma pemrograman dinamis untuk pensejajaran global.
 2. Implementasi algoritma MSA
 
-## Aturan
-1. Bahasa yang digunakan adalah bahasa prosedural yang sudah dipelajari selama kuliah : C, C++, Java, Python.
-2. Anda boleh mencari kode referensi, namun pastikan anda **menulis kode sendiri**. Pemahaman menjadi bagian penting dari penilaian.
-3. **Tidak diperbolehkan** menggunakan pustaka yang mengimplementasikan kedua algoritma, misal parasail atau BioPython. Usahakan untuk tidak menggunakan pustaka lain di luar pustaka standar / built-in.
-4. Gunakan file eksternal untuk melakukan pensejajaran. File eksternal berupa : (a) data (sekuens alfabet) , (b) scoring matrix , (c) alfabet sekuens.
-5. Berkaitan dengan nomor 4, pastikan anda dapat mengubah alfabet dari sekuens dan scoring matrix. Misalkan, alfabet pensejajaran sekuens basa nukleotid adalah ACGT, dan terdapat 20 alfabet untuk pensejajaran sekuens asam amino. Untuk scoring matrix pensejajaran asam amino, anda dapat menggunakan matriks PAM250. Adapun pensejajaran sekuens nukleotid dapat menggunakan aturan match(1) mismatch(-1) indel/gap(-1). Scoring konstan, tidak perlu menggunakan *affine scoring*.
-6. Format untuk nomor (4) dan (5) dibebaskan.
-7. Program disarankan cukup *terminal-based*. 
+## Global Alignment
+Algoritma pensejajaran global yang digunakan adalah algoritma Needleman-Wunsch (N-W) dengan menggunakan dynamic programming. Pendekatan algoritma ini saya bagi menjadi dua, yaitu utnuk pensejajaran antar nukleotida (ACTGU) dan pensejajaran antar protein (20 jenis asam amino).
+Awalnya akan dibuat sebuah matrix n x m di mana n adalah panjang sekuens pertama dan m adalah panjang sekuens kedua. Matrix lalu diisi oleh nilaiantar basa nukelotida dengan aturan match(1) mismatch(-1) indel/gap(-1). Deangkan untuk pensejajaran protein, diambil data dari scoring matrix (matrix PAM250) terlebih dahulu lalu dihitung nilai tiap sel pada matrix. Setelah matrix terisi penuh, dilakukan proses traceback untuk menelusuri jalan sehingga diperoleh skor akhir pada sel matrix ujung kanan bawah.<br/>
 
-## Tips
-[1] Pemrograman dinamis pensejajaran global yang naif, sayangnya memiliki kompleksitas ruang eksponensial. Sebagai contoh, bila anda membandingkan dua buah sekuens DNA dengan panjang ~29000, anda akan memerlukan ruang sekitar 29000 x 29000 ~ 784.000.000. Beberapa komputer mungkin tidak memiliki cukup memori. Gunakan *DnC* untuk membantu mengurangi kompleksitas ruang<br>
-[2] Anda bisa saja menggunakan Needleman-Wunsch n-dimensi untuk melakukan MSA, akan tetapi ingat bahwa kompleksitasnya eksponensial terhadap jumlah sekuens. Anda disarankan menggunakan *progressive alignment* dengan menggunakan profiling.<br>
-[3] Anda dapat membuat 2 buah algoritma untuk perbanding antar sekuens dan perbandingan antar profil. Coba anda ubah agar anda melakukan keduanya secara langsung, sehingga mengurangi beban kerja anda.<br>
-[4] Anda bisa saja menggunakan Python untuk mengerjakan tugas, namun ingat bahwa **kinerja C++ dan C jauh lebih cepat**. Sebagai pengalaman, asisten menjalankan skoring pensejajaran global 2 DNA dengan panjang ~29000 nukleotida. Algoritma berjalan 100 menit untuk Python, dan algoritma berjalan hanya 3 menit untuk bahasa C++ dengan flag -O3 (optimization) ketika kompilasi (**33 x speedup !**). Sebagai saran (bila anda keukeuh menggunakan Python) , anda bisa menggunakan Python optimizer (misal Numba ataupun Cython) untuk mempercepat eksekusi algoritma anda.
+untuk mengoptimalkan algoritma N-W ini, digunakan pendekatan divide and conquer (DnC). Algoritma ini menggunakan fungsi rekursif. Basis dari fungsi ini adalah ketika ukuran salah satu sisi matrix (baris atau kolomnya) sudah mencapai angka 1. Dilakukan pemrosesan matrix basis tersebut dengan algoritma N-W biasa. Sedangkan rekuresnnya adalah membagi-bagi matrix berukuran n x m tadi ke beberapa bagian.
 
-## Pengumpulan
-### Pengerjaan
-Silahkan lakukan *fork* dari *repository* ini.
+## Getting Started
+### How to compile
+Pdaa folder src terdapat kode sumber program. Untuk melakukan kompilasi, lakukan langkah-langkah berikut:
+1. Buka cmd (windows) untuk direktori src
+2. ketikan perintah berikut di cmd
+```
+g++ main.cpp -o main
+```
+3. Kompilasi telah selesai, jika ingin menjalankan program dari hasil kompilasi tersebut, ketikkan perintah berikut di cmd
+```
+main.exe
+```
 
-### Deliverables
-1. File yang berisi hasil pensejajaran sekuens global. Misal , hasil pensejajaran antara sekuens pertama (file1.fasta) dan sekuens kedua (file2.fasta) ditulis dalam folder /result/file1_file2/. Lalu dalam folder file1_file2, tuliksan hasil pensejajaran masing-masing file1.fasta dan file2.fasta sebagai file1.txt dan file2.txt. Tuliskan score dalam sebuah file score.txt. 
-2. Kode sumber. Tuliskan cara kompilasi bila menggunakan *compiled language*, namun lebih baik dilengkapi dengan Makefile.
-3. Ubah Readme ini. Tuliskan pendekatan pensejajaran yang anda lakukan dan cara menjalankan program.
+### How to run
+Pada folder bin, terdapat executable file yang dapat langsung dijalankan.
+1. Buka cmd (windows) di direktori bin
+2. ketikkan perintah berikut
+```
+main.exe
+```
+3. Program berhasil dijalankan.
 
-### Teknis Pengumpulan
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kumpulkan dengan membuat *merge request* pada *repository* ini. Batas pengumpulan dan demo adalah 29 Juli 2020.
+### How to test
+Untuk memasukkan test case, lakukan langkah berikut pada progam yang sudah dijalankan
+1. pilih option 1 atau 2 (1 untuk pensejajaran nukelotida dan 2 untuk pensejajaran antar protein)
+2. Masukkan file eksternal untuk sekuens pertama dan kedua
+3. Algoritma akan memproses kedua sekuens
+4. Hasil akan ditampilkan di layar cmd dan disimpan pada file eksternal pada folder result.
 
-### Demo
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setelah selesai, jadwalkan demo dengan asisten. Kontak dapat dilihat pada Readme ini. Demo berlangsung 15-30 menit. Demo akan berisi tanya jawab, namun belum tentu akan diisi oleh pengujian, tergantung *runtime* dari algoritma anda.
-
-## Penilaian
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uji cobakan algoritma anda dengan data yang telah disediakan di *repository* ini. Percobaan minimal menghasilkan 3 pensejajaran global untuk kasus 2 sekuens, 2 pensejajaran global kasus 3 sekuens, 1 pensejajaran global untuk kasus 4 sekuens.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nilai maksimal 1350 untuk *milestone* pertama, dan nilai maksimal 1800 untuk milestone kedua. Nilai maksimal demo adalah 850, sehingga nilai maksimal total adalah 4000. Algoritma anda **wajib optimum** untuk pensejajaran global 2 sekuens. Akan tetapi, algoritma anda tidak harus optimum untuk MSA. Implementasi MSA lebih kepada *proof-of-concept*.
-
-## Kontak
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Silahkan hubungi asisten lewat line @alamhasabiebaru atau lewat email 13517096@std.stei.itb.ac.id dengan subjek  \[SELEKSI IRK - SEQUENCE ALIGNMENT\] . *Note : waktu menjawab bervariasi, namun email biasanya akan dibalas kurang dari sehari. Line mungkin tidak dibalas dalam waktu satu-dua hari. Mohon bersabar :)*. Pertanyaan juga dipersilahkan. Jawaban akan diposting dalam bagian QnA README ini.
-
-## QnA
-1. Apakah saya boleh menggunakan data sekuens asam amino yang tidak ada di repo ini ? Hanya ada dua sekuens asam amino yang diberikan. Saya rasa pengujian dengan sekuens basa nukleotid terlalu besar. <br>
-**Boleh !**. Silahkan ambil data dari website https://www.ncbi.nl.nih.gov . Bila anda ingin menggunakan data yang diberikan, carilah sekuens asam amino glikoprotein dari sebuah *strain* Coronavirus agar skor algoritma anda lebih tinggi. Masukkan data ke repository sebagai bagian dari *deliverables*.
 
 ## Referensi
 Silahkan gunakan referensi berikut sebagai awal pengerjaan tugas:<br>
@@ -63,6 +58,6 @@ Silahkan gunakan referensi berikut sebagai awal pengerjaan tugas:<br>
 [2] Beragam kode sumber : https://github.com/topics/needleman-wunsch-algorithm<br>
 [3] Data sekuens DNA : https://www.ncbi.nlm.nih.gov/nuccore<br>
 [4] MSA dengan profile : https://www.ncbi.nlm.nih.gov/CBBresearch/Przytycka/download/lectures/PCB_Lect05_Multip_Align.pdf [pdf]<br>
+[5] https://github.com/farhanma/PySeq
+[6] https://github.com/jtloong/needleman-wunsch-py
 
-## Final Words
-Akhir Kata, selamat bersenang-senang ! By the end, you can show something new on your github repo ;)

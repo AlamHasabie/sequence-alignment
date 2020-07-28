@@ -31,30 +31,8 @@ Terdapat dua titik capai dalam tugas ini :
 [3] Anda dapat membuat 2 buah algoritma untuk perbanding antar sekuens dan perbandingan antar profil. Coba anda ubah agar anda melakukan keduanya secara langsung, sehingga mengurangi beban kerja anda.<br>
 [4] Anda bisa saja menggunakan Python untuk mengerjakan tugas, namun ingat bahwa **kinerja C++ dan C jauh lebih cepat**. Sebagai pengalaman, asisten menjalankan skoring pensejajaran global 2 DNA dengan panjang ~29000 nukleotida. Algoritma berjalan 100 menit untuk Python, dan algoritma berjalan hanya 3 menit untuk bahasa C++ dengan flag -O3 (optimization) ketika kompilasi (**33 x speedup !**). Sebagai saran (bila anda keukeuh menggunakan Python) , anda bisa menggunakan Python optimizer (misal Numba ataupun Cython) untuk mempercepat eksekusi algoritma anda.
 
-## Pengumpulan
-### Pengerjaan
-Silahkan lakukan *fork* dari *repository* ini.
-
-### Deliverables
-1. File yang berisi hasil pensejajaran sekuens global. Misal , hasil pensejajaran antara sekuens pertama (file1.fasta) dan sekuens kedua (file2.fasta) ditulis dalam folder /result/file1_file2/. Lalu dalam folder file1_file2, tuliksan hasil pensejajaran masing-masing file1.fasta dan file2.fasta sebagai file1.txt dan file2.txt. Tuliskan score dalam sebuah file score.txt. 
-2. Kode sumber. Tuliskan cara kompilasi bila menggunakan *compiled language*, namun lebih baik dilengkapi dengan Makefile.
-3. Ubah Readme ini. Tuliskan pendekatan pensejajaran yang anda lakukan dan cara menjalankan program.
-
-### Teknis Pengumpulan
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kumpulkan dengan membuat *merge request* pada *repository* ini. Batas pengumpulan dan demo adalah 29 Juli 2020.
-
-### Demo
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setelah selesai, jadwalkan demo dengan asisten. Kontak dapat dilihat pada Readme ini. Demo berlangsung 15-30 menit. Demo akan berisi tanya jawab, namun belum tentu akan diisi oleh pengujian, tergantung *runtime* dari algoritma anda.
-
-## Penilaian
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uji cobakan algoritma anda dengan data yang telah disediakan di *repository* ini. Percobaan minimal menghasilkan 3 pensejajaran global untuk kasus 2 sekuens, 2 pensejajaran global kasus 3 sekuens, 1 pensejajaran global untuk kasus 4 sekuens.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nilai maksimal 1350 untuk *milestone* pertama, dan nilai maksimal 1800 untuk milestone kedua. Nilai maksimal demo adalah 850, sehingga nilai maksimal total adalah 4000. Algoritma anda **wajib optimum** untuk pensejajaran global 2 sekuens. Akan tetapi, algoritma anda tidak harus optimum untuk MSA. Implementasi MSA lebih kepada *proof-of-concept*.
-
-## Kontak
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Silahkan hubungi asisten lewat line @alamhasabiebaru atau lewat email 13517096@std.stei.itb.ac.id dengan subjek  \[SELEKSI IRK - SEQUENCE ALIGNMENT\] . *Note : waktu menjawab bervariasi, namun email biasanya akan dibalas kurang dari sehari. Line mungkin tidak dibalas dalam waktu satu-dua hari. Mohon bersabar :)*. Pertanyaan juga dipersilahkan. Jawaban akan diposting dalam bagian QnA README ini.
-
-## QnA
-null.
+## Run
+python main.py
 
 ## Referensi
 Silahkan gunakan referensi berikut sebagai awal pengerjaan tugas:<br>

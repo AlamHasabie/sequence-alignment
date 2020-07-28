@@ -58,6 +58,6 @@ Silahkan gunakan referensi berikut sebagai awal pengerjaan tugas:<br>
 [2] Beragam kode sumber : https://github.com/topics/needleman-wunsch-algorithm<br>
 [3] Data sekuens DNA : https://www.ncbi.nlm.nih.gov/nuccore<br>
 [4] MSA dengan profile : https://www.ncbi.nlm.nih.gov/CBBresearch/Przytycka/download/lectures/PCB_Lect05_Multip_Align.pdf [pdf]<br>
-[5] https://github.com/farhanma/PySeq
+[5] https://github.com/farhanma/PySeq<br>
 [6] https://github.com/jtloong/needleman-wunsch-py
 
